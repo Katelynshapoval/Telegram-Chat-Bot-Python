@@ -58,10 +58,7 @@ async def send(context: ContextTypes.DEFAULT_TYPE):
             await telegram.Bot(TOKEN).send_message(id, text=reply)
             await telegram.Bot(TOKEN).send_photo(id, photo=randomImage())
 def randomImage():
-    path = "C:/Users/katel/OneDrive/Desktop/Coding by myself/Python/ChatBot/img"
-    jpg_files = Path(path).glob("*.jpg")
-    png_files = Path(path).glob("*.png")
-    image_strings = [str(p) for p in jpg_files] + [str(p) for p in png_files]
+    image_strings = [f"cat{x}.jpg" for x in range(17)]
     return random.choice(image_strings)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = "Hi! I'm a chatbot made for those who depend on Euro currency."
@@ -86,6 +83,6 @@ if __name__ == '__main__':
     application.add_handler(start_handler)
     application.add_handler(rate_handler)
 
-    job_minute = job_queue.run_repeating(send, interval=86400, first=10)
+    job_minute = job_queue.run_repeating(send, interval=86400, first=60)
 
     application.run_polling()
