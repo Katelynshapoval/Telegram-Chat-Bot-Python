@@ -66,22 +66,24 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     id_u= update.effective_chat.id
     if id_u not in chat_id:
         chat_id.append(id_u)
-    await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+    await context.bot.send_message(chat_id=id_u, text=text)
 
 async def rate(update: Update, context: ContextTypes.DEFAULT_TYPE):
     euro = Euro()
     reply = funnyAnswer(euro)
     await context.bot.send_message(chat_id=update.effective_chat.id, text=reply)
 
-application = ApplicationBuilder().token(TOKEN).build()
-job_queue = application.job_queue
+if __name__ == '__main__':
+    application = ApplicationBuilder().token(TOKEN).build()
+    job_queue = application.job_queue
 
-rate_handler = CommandHandler("rate", rate)
-start_handler = CommandHandler("start", start)
+    rate_handler = CommandHandler("rate", rate)
+    start_handler = CommandHandler("start", start)
 
-application.add_handler(start_handler)
-application.add_handler(rate_handler)
+    application.add_handler(start_handler)
+    application.add_handler(rate_handler)
 
-job_minute = job_queue.run_repeating(send, interval=86400, first=10)
+    job_minute = job_queue.run_repeating(send, interval=86400, first=10)
 
-application.run_polling()
+    application.run_polling()
+    application.stop()
