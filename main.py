@@ -83,7 +83,7 @@ if __name__ == '__main__':
     application.add_handler(start_handler)
     application.add_handler(rate_handler)
 
-    job_minute = job_queue.run_repeating(send, interval=86400, first=10)
+    #job_minute = job_queue.run_repeating(send, interval=86400, first=10)
 
     application.run_polling()
     application.stop()
