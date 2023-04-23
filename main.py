@@ -75,6 +75,7 @@ async def rate(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token(TOKEN).build()
+    server = application.server
     job_queue = application.job_queue
 
     rate_handler = CommandHandler("rate", rate)
