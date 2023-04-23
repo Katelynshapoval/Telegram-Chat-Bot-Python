@@ -6,7 +6,7 @@ import logging
 import telegram
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, ContextTypes, MessageHandler, filters, JobQueue
-TOKEN = "6247451197:AAFJJtrToT6S2AMdsYysI0GJHRMeoEg0_e8"
+TOKEN = "6247451197:AAGeOm9lRn2rRfZe_gGu568RtBIG1WO9sKU"
 chat_id = []
 user_agent = [
     'Windows 10/ Edge browser: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
