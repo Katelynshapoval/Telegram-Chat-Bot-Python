@@ -73,16 +73,17 @@ async def rate(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply = funnyAnswer(euro)
     await context.bot.send_message(chat_id=update.effective_chat.id, text=reply)
 
-application = ApplicationBuilder().token(TOKEN).build()
-server = application.server
-job_queue = application.job_queue
+if __name__ == '__main__':
+    application = ApplicationBuilder().token(TOKEN).build()
+    job_queue = application.job_queue
 
-rate_handler = CommandHandler("rate", rate)
-start_handler = CommandHandler("start", start)
+    rate_handler = CommandHandler("rate", rate)
+    start_handler = CommandHandler("start", start)
 
-application.add_handler(start_handler)
-application.add_handler(rate_handler)
+    application.add_handler(start_handler)
+    application.add_handler(rate_handler)
 
-job_minute = job_queue.run_repeating(send, interval=86400, first=10)
-application.run_polling()
+    job_minute = job_queue.run_repeating(send, interval=86400, first=10)
+
+    application.run_polling()
 
