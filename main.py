@@ -6,7 +6,7 @@ import logging
 import telegram
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, ContextTypes, MessageHandler, filters, JobQueue
-TOKEN = "6247451197:AAGeOm9lRn2rRfZe_gGu568RtBIG1WO9sKU"
+TOKEN = "6247451197:AAHOHz7enZC0zG8gb-nNkB_5ZqQv2o2c-5s"
 chat_id = []
 user_agent = [
     'Windows 10/ Edge browser: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     app.add_handler(start_handler)
     app.add_handler(rate_handler)
 
-    job_minute = job_queue.run_repeating(send, interval=86400, first=60)
+    job_minute = job_queue.run_repeating(send, interval=86400, first=20)
 
     app.run_polling()
